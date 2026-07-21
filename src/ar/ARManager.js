@@ -159,9 +159,21 @@ updateProgress(
 
   updateLoading("Menyiapkan Kamera...");
 
-  await mindarThree.start();
+try {
 
-hideLoading();
+    await mindarThree.start();
+
+    hideLoading();
+
+} catch (err) {
+
+    console.error("MindAR gagal start:", err);
+
+    alert(
+        `MindAR gagal start\n\n${err.name}\n\n${err.message}`
+    );
+
+}
 
   let isDragging = false;
 let lastX = 0;
